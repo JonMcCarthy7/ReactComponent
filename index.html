@@ -19,25 +19,40 @@
       </div>
     </div>
   </div>
-  <script type="text/babel">
+  <!-- Needs to be text/babel -->
+  <script type="text/babel" >
+    // This is how to create a component
     var Jumbotron = React.createClass({
-      render: function() {
+      propTypes: {
+        title: React.PropTypes.string.isRequired
+      },
+
+      getDefaultProps: function(){
+        return{
+          title: "This is the title",
+          text: "This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.",
+          link: "https://youtube.com"
+        }
+      },
+      // must have render
+      render: function(){
         return(
-          <div>
-            <div className="jumbotron">
-              <h1 className="display-4">Hello, world!</h1>
-              <p className="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-              <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-              <p className="lead">
-                <a className="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
-              </p>
-            </div>
+        <div>
+          <div className="jumbotron">
+            <h1 className="display-4">{this.props.title}!</h1>
+            <p className="lead">{this.props.text}</p>
+
+            <p className="lead">
+              <a className="btn btn-primary btn-lg" href={this.props.link} role="button">Learn more</a>
+            </p>
           </div>
+        </div>
         )
       }
     });
     ReactDOM.render(
-      <Jumbotron />,
+      // Calling the component and passing in a prop
+      <Jumbotron title="This overrides the default"/>,
       document.getElementById('jumbotron')
     );
   </script>
