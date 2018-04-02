@@ -30,8 +30,7 @@
       getDefaultProps: function(){
         return{
           title: "This is the title",
-          text: "This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.",
-          link: "https://youtube.com"
+          text: "This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information."
         }
       },
       // must have render
@@ -43,11 +42,15 @@
             <p className="lead">{this.props.text}</p>
 
             <p className="lead">
-              <a className="btn btn-primary btn-lg" href={this.props.link} role="button">Learn more</a>
+              <a onClick={this.onClick.bind(this, "Hello Jon", "Goodbye Jon")} className="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
             </p>
           </div>
         </div>
         )
+      },
+      // Must be afte the render function
+      onClick: function(greeting, greeting2) {
+        alert(greeting2);
       }
     });
     ReactDOM.render(
